@@ -8,6 +8,11 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import android.support.annotation.NonNull
+import android.support.v4.app.FragmentActivity
+import android.util.Log
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.OnSuccessListener
 
 class MainActivity : AppCompatActivity() {
 
@@ -43,5 +48,6 @@ class MainActivity : AppCompatActivity() {
         var inputTxt: Editable? = inputForm.getText()
 
         Toast.makeText(this, "$inputTxt", Toast.LENGTH_SHORT).show()
+
     }
 }
