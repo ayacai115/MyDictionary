@@ -15,7 +15,6 @@ import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.OnSuccessListener
 
 class MainActivity : AppCompatActivity() {
-
     // なぜかOnNavigationItemSelectedListenerがunresolvedになるので一旦おいておく
 //    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
 //        when (item.itemId) {
