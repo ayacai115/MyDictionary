@@ -1,18 +1,17 @@
-package com.ayaoki.mydictionary
+package com.ayaoki.mydictionary.Controller
 
 import android.os.Bundle
-import android.support.design.R.styleable.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
-import kotlinx.android.synthetic.main.activity_main.*
-import android.support.annotation.NonNull
-import android.support.v4.app.FragmentActivity
-import android.util.Log
-import com.google.android.gms.tasks.OnFailureListener
-import com.google.android.gms.tasks.OnSuccessListener
+import com.ayaoki.mydictionary.Model.Vocabulary
+import com.ayaoki.mydictionary.R
+import com.google.firebase.firestore.FirebaseFirestore
+
+
+
 
 class MainActivity : AppCompatActivity() {
     // なぜかOnNavigationItemSelectedListenerがunresolvedになるので一旦おいておく
@@ -48,5 +47,23 @@ class MainActivity : AppCompatActivity() {
 
         Toast.makeText(this, "$inputTxt", Toast.LENGTH_SHORT).show()
 
+        val db = FirebaseFirestore.getInstance()
+        // このクラスはあとで消す
+        val vocabulary = Vocabulary( "hoge")
+
+        db.collection("users")
+            .document("test-user201812")
+            .collection("vocabularies")
+            .document("$inputTxt")
+            .set(vocabulary)
+            .addOnCompleteListener {
+                Toast.makeText(this, "addOnCompleteListener is called", Toast.LENGTH_SHORT).show()
+            }
+            .addOnSuccessListener({
+                Toast.makeText(this, "送信完了", Toast.LENGTH_SHORT).show()
+            })
+            .addOnFailureListener({
+                Toast.makeText(this, "送信失敗", Toast.LENGTH_SHORT).show()
+            })
     }
 }
