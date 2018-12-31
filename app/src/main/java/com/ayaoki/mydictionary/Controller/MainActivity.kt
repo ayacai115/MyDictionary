@@ -9,7 +9,13 @@ import android.widget.Toast
 import com.ayaoki.mydictionary.Model.Vocabulary
 import com.ayaoki.mydictionary.R
 import com.google.firebase.firestore.FirebaseFirestore
-
+import com.google.firebase.firestore.QueryDocumentSnapshot
+import com.google.firebase.firestore.QuerySnapshot
+import com.google.android.gms.tasks.Task
+import android.support.annotation.NonNull
+import android.support.v4.app.FragmentActivity
+import android.util.Log
+import com.google.android.gms.tasks.OnCompleteListener
 
 
 
@@ -51,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         // このクラスはあとで消す
         val vocabulary = Vocabulary( "hoge")
 
+        // DBへの書き込み
         db.collection("users")
             .document("test-user201812")
             .collection("vocabularies")
@@ -65,5 +72,40 @@ class MainActivity : AppCompatActivity() {
             .addOnFailureListener({
                 Toast.makeText(this, "送信失敗", Toast.LENGTH_SHORT).show()
             })
+    }
+
+    fun listButtonIsClicked(buttonView: View) {
+        Log.d("TAG", "listButtonIsClicked is called")
+        // DBからの読み取り
+        val db = FirebaseFirestore.getInstance()
+        db.collection("users")
+            .document("test-user201812")
+            .collection("vocabularies")
+            .document("tea")
+            .get()
+            .addOnCompleteListener({
+                if (it.isSuccessful) {
+                    val vocabulary = it.result!!.toObject(Vocabulary::class.java)
+                    Toast.makeText(this, "成功", Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this, "失敗", Toast.LENGTH_SHORT).show()
+                }
+            })
+
+//            .addOnCompleteListener { task ->
+//                if (task.isSuccessful) {
+//                    Toast.makeText(this, "成功1", Toast.LENGTH_SHORT).show()
+//                    Toast.makeText(this, "成功1", Toast.LENGTH_SHORT).show()
+////                    for (document in task.result!!) {
+////                        Log.d("TAG", "$document.id")
+////                        Toast.makeText(this, "$document.id", Toast.LENGTH_SHORT).show()
+////                        Toast.makeText(this, "$document.data", Toast.LENGTH_SHORT).show()
+////                        Toast.makeText(this, "成功2", Toast.LENGTH_SHORT).show()
+////                    }
+//                } else {
+////                    Log.w(FragmentActivity.TAG, "Error getting documents.", task.exception)
+//                    Toast.makeText(this, "失敗", Toast.LENGTH_SHORT).show()
+//                }
+//            }
     }
 }
