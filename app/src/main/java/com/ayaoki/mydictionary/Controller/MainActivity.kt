@@ -19,9 +19,6 @@ import com.google.android.gms.tasks.OnCompleteListener
 
 
 
-
-
-
 class MainActivity : AppCompatActivity() {
     // なぜかOnNavigationItemSelectedListenerがunresolvedになるので一旦おいておく
 //    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
