@@ -50,12 +50,13 @@ class MainActivity : AppCompatActivity() {
     fun buttonIsClicked(buttonView: View) {
         var inputForm: EditText = findViewById(R.id.inputForm)
         var inputTxt: Editable? = inputForm.getText()
-
+        var exampleInputTxt: Editable? = inputForm.getText()
         Toast.makeText(this, "$inputTxt", Toast.LENGTH_SHORT).show()
 
         val db = FirebaseFirestore.getInstance()
         // このクラスはあとで消す
-        val vocabulary = Vocabulary( "hoge")
+        val exampleInputs = arrayListOf<String>("$exampleInputTxt", "foo", "bar")
+        val vocabulary = Vocabulary("", exampleInputs)
 
         // DBへの書き込み
         db.collection("users")

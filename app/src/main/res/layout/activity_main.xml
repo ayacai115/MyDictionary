@@ -18,6 +18,10 @@
         <EditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/inputForm"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/exampleInputFrom"
+        />
         <Button
                 android:text="Button"
                 android:layout_width="match_parent"
