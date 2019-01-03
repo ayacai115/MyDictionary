@@ -4,19 +4,12 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.text.Editable
 import android.view.View
-import android.widget.EditText
 import android.widget.Toast
 import com.ayaoki.mydictionary.Model.Vocabulary
 import com.ayaoki.mydictionary.R
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.QueryDocumentSnapshot
-import com.google.firebase.firestore.QuerySnapshot
-import com.google.android.gms.tasks.Task
-import android.support.annotation.NonNull
-import android.support.v4.app.FragmentActivity
 import android.util.Log
-import com.google.android.gms.tasks.OnCompleteListener
-
+import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -48,14 +41,15 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun buttonIsClicked(buttonView: View) {
-        var inputForm: EditText = findViewById(R.id.inputForm)
-        var inputTxt: Editable? = inputForm.getText()
-        var exampleInputTxt: Editable? = inputForm.getText()
+        var inputTxt: Editable? = vocabularyForm.getText()
+        var exampleSentence1: Editable? = exampleSentenceForm1.getText()
+        var exampleSentence2: Editable? = exampleSentenceForm2.getText()
+        var exampleSentence3: Editable? = exampleSentenceForm3.getText()
         Toast.makeText(this, "$inputTxt", Toast.LENGTH_SHORT).show()
 
         val db = FirebaseFirestore.getInstance()
         // このクラスはあとで消す
-        val exampleInputs = arrayListOf<String>("$exampleInputTxt", "foo", "bar")
+        val exampleInputs = arrayListOf<String>("$exampleSentence1", "$exampleSentence2", "$exampleSentence3")
         val vocabulary = Vocabulary("", exampleInputs)
 
         // DBへの書き込み

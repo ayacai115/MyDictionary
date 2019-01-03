@@ -10,18 +10,30 @@
 
     <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="241dp"
             android:layout_height="wrap_content" android:gravity="center" app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/navigation">
         <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/inputForm"/>
+                android:layout_height="wrap_content" android:id="@+id/vocabularyForm" android:hint="単語"/>
         <EditText
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" android:id="@+id/exampleInputFrom"
-        />
+                android:layout_height="wrap_content" android:id="@+id/meaningForm"
+                android:hint="意味"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/exampleSentenceForm1"
+                android:hint="例文"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/exampleSentenceForm2"
+                android:hint="例文"/>
+        <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/exampleSentenceForm3"
+                android:hint="例文"/>
         <Button
                 android:text="Button"
                 android:layout_width="match_parent"
