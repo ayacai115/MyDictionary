@@ -42,15 +42,15 @@ class MainActivity : AppCompatActivity() {
 
     fun buttonIsClicked(buttonView: View) {
         var inputTxt: Editable? = vocabularyForm.getText()
+        val meaning: String = meaningForm.getText().toString()
         var exampleSentence1: Editable? = exampleSentenceForm1.getText()
         var exampleSentence2: Editable? = exampleSentenceForm2.getText()
         var exampleSentence3: Editable? = exampleSentenceForm3.getText()
         Toast.makeText(this, "$inputTxt", Toast.LENGTH_SHORT).show()
 
         val db = FirebaseFirestore.getInstance()
-        // このクラスはあとで消す
         val exampleInputs = arrayListOf<String>("$exampleSentence1", "$exampleSentence2", "$exampleSentence3")
-        val vocabulary = Vocabulary("", exampleInputs)
+        val vocabulary = Vocabulary(meaning, exampleInputs)
 
         // DBへの書き込み
         db.collection("users")
@@ -63,6 +63,11 @@ class MainActivity : AppCompatActivity() {
             }
             .addOnSuccessListener({
                 Toast.makeText(this, "送信完了", Toast.LENGTH_SHORT).show()
+                vocabularyForm.setText("")
+                meaningForm.setText("")
+                exampleSentenceForm1.setText("")
+                exampleSentenceForm2.setText("")
+                exampleSentenceForm3.setText("")
             })
             .addOnFailureListener({
                 Toast.makeText(this, "送信失敗", Toast.LENGTH_SHORT).show()
