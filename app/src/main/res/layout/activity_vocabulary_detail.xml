@@ -19,5 +19,17 @@
                 android:text="MEANING"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" android:id="@+id/vocabularyDetailMeaning"/>
+        <TextView
+                android:text="EXAMPLE1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/vocabularyDetailExample1"/>
+        <TextView
+                android:text="EXAMPLE2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/vocabularyDetailExample2"/>
+        <TextView
+                android:text="EXAMPLE3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/vocabularyDetailExample3"/>
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
