@@ -75,7 +75,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun listButtonIsClicked(buttonView: View) {
-        Log.d("TAG", "listButtonIsClicked is called")
         // DBからの読み取り
         val db = FirebaseFirestore.getInstance()
         db.collection("users")
@@ -91,21 +90,5 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "失敗", Toast.LENGTH_SHORT).show()
                 }
             })
-
-//            .addOnCompleteListener { task ->
-//                if (task.isSuccessful) {
-//                    Toast.makeText(this, "成功1", Toast.LENGTH_SHORT).show()
-//                    Toast.makeText(this, "成功1", Toast.LENGTH_SHORT).show()
-////                    for (document in task.result!!) {
-////                        Log.d("TAG", "$document.id")
-////                        Toast.makeText(this, "$document.id", Toast.LENGTH_SHORT).show()
-////                        Toast.makeText(this, "$document.data", Toast.LENGTH_SHORT).show()
-////                        Toast.makeText(this, "成功2", Toast.LENGTH_SHORT).show()
-////                    }
-//                } else {
-////                    Log.w(FragmentActivity.TAG, "Error getting documents.", task.exception)
-//                    Toast.makeText(this, "失敗", Toast.LENGTH_SHORT).show()
-//                }
-//            }
     }
 }
