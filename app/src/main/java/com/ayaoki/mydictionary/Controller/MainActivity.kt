@@ -10,6 +10,9 @@ import com.ayaoki.mydictionary.R
 import com.google.firebase.firestore.FirebaseFirestore
 import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
+import android.content.Intent
+
+
 
 
 class MainActivity : AppCompatActivity() {
@@ -90,5 +93,8 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this, "失敗", Toast.LENGTH_SHORT).show()
                 }
             })
+
+        val intent = Intent(this@MainActivity, VocabularyDetailActivity::class.java)
+        startActivity(intent)
     }
 }
